@@ -36,7 +36,11 @@ export default [
         verbose: true,
         contentBase: ["","dist/main"],
         host: "localhost",
-        port: 3000,
+        port: 3008,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          foo: 'bar'
+        },
       }), // to test the application locally
       livereload({ watch: "dist/main" }),
     ]
@@ -69,7 +73,11 @@ export default [
         verbose: true,
         contentBase: ["", "dist/drawer"],
         host: "localhost",
-        port: 3005,
+        port: 3007,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          foo: 'bar'
+        },
       }), // to test the application locally
       livereload({ watch: "dist/drawer" }),
     ]

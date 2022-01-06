@@ -4,9 +4,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="">
         test logistics container and some cool features 😎
-      </header>
+      </div>
     </div>
   );
 }

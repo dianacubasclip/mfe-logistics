@@ -7706,18 +7706,46 @@
 	  }
 	}
 
-	var css_248z = ".App {\n    text-align: center;\n  }\n  \n  .App-logo {\n    height: 40vmin;\n    pointer-events: none;\n  }\n  \n  @media (prefers-reduced-motion: no-preference) {\n    .App-logo {\n      animation: App-logo-spin infinite 20s linear;\n    }\n  }\n  \n  .App-header {\n    background-color: #282c34;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    font-size: calc(10px + 2vmin);\n    color: white;\n  }\n  \n  .App-link {\n    color: #61dafb;\n  }\n  \n  @keyframes App-logo-spin {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }";
+	var css_248z = ".App {\n    text-align: center;\n  }\n  \n  .App-logo {\n    height: 40vmin;\n    pointer-events: none;\n  }\n  \n  @media (prefers-reduced-motion: no-preference) {\n    .App-logo {\n      animation: App-logo-spin infinite 20s linear;\n    }\n  }\n  \n  .App-link {\n    color: #61dafb;\n  }\n  \n  @keyframes App-logo-spin {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }";
 	styleInject(css_248z);
 
 	function App() {
 	  return /*#__PURE__*/React.createElement("div", {
 	    className: "App"
-	  }, /*#__PURE__*/React.createElement("header", {
-	    className: "App-header"
+	  }, /*#__PURE__*/React.createElement("div", {
+	    className: ""
 	  }, "test logistics container and some cool features \uD83D\uDE0E"));
 	}
 
-	ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.querySelector('#root'));
+	// In production, we register a service worker to serve assets from local cache.
+	// This lets the app load faster on subsequent visits in production, and gives
+	// it offline capabilities. However, it also means that developers (and users)
+	// will only see deployed updates on the "N+1" visit to a page, since previously
+	// cached resources are updated in the background.
+	// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
+	// This link also includes instructions on opting out of this behavior.
+	Boolean(window.location.hostname === 'localhost' || // [::1] is the IPv6 localhost address.
+	window.location.hostname === '[::1]' || // 127.0.0.1/8 is considered localhost for IPv4.
+	window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+
+	function unregister() {
+	  if ('serviceWorker' in navigator) {
+	    navigator.serviceWorker.ready.then(registration => {
+	      registration.unregister();
+	    });
+	  }
+	}
+
+	window.renderLogistics = (containerId, history) => {
+	  ReactDOM.render( /*#__PURE__*/React.createElement(App, {
+	    history: history
+	  }), document.getElementById(containerId));
+	  unregister();
+	};
+
+	window.unmountLogistics = containerId => {
+	  ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
+	};
 
 })();
 //# sourceMappingURL=bundle.js.map
